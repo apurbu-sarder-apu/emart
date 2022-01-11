@@ -16,7 +16,7 @@ const Products = () => {
                 setFilter(await response.json());
                 setLoading(false);
                 console.log(filter)
-            }
+            } 
             return () => {
                 componentMounted = false;
             }
@@ -24,35 +24,37 @@ const Products = () => {
         getProducts();
     }, []);
 
-    // const Loading = () => {
-    //     return (
-    //         <>
-    //             Loading.....
-    //         </>
-    //     )
-    // }
+
+
+const filterProduct = (cat) => {
+    const updatedList = data.filter((x)=>x.category === cat);
+    setFilter(updatedList);
+}
+
+
+
 
     const ShowProducts = () => {
         return (
             <>
 
                 <div className='buttons d-flex justify-content-center mb-5 pb-5'>
-                    <div className="btn btn-outline-dark me-2">All</div>
-                    <div className="btn btn-outline-dark me-2">Men's Clothing</div>
-                    <div className="btn btn-outline-dark me-2">Women's Clothing</div>
-                    <div className="btn btn-outline-dark me-2">Jewelery</div>
-                    <div className="btn btn-outline-dark me-2">Electronic</div>
+                    <div className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>All</div>
+                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("Men's clothing")}>Men's Clothing</div>
+                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</div>
+                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("Jewelery")}>Jewelery</div>
+                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</div>
                 </div>
                 {filter.map((product) => {
                     return (
                         <>
-                            <div className="col-md-3">
-                                <div className="card" >
-                                    <img src={product.image} className="card-img-top" alt={product.title} />
+                            <div className="col-md-3 mb-4">
+                                <div className="card h-100 text-center p-4" key={product.id}>
+                                    <img src={product.image} className="card-img-top" alt={product.title} height="250px" />
                                     <div className="card-body">
-                                        <h5 className="card-title">{product.title}</h5>
-                                        <p className="card-text">${product.prices}</p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                                        <h5 className="card-title mb-0">{product.title.substring(0, 12)}...</h5>
+                                        <p className="card-text lead fw-bold">${product.price}</p>
+                                        <a href="#" className="btn btn-primary">Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,4 +85,4 @@ const Products = () => {
     );
 }
 
-export default Products;
+export default Products; 
