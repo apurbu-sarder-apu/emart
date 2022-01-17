@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import Loading from './Loading';
 
 const Products = () => {
@@ -40,9 +41,9 @@ const filterProduct = (cat) => {
 
                 <div className='buttons d-flex justify-content-center mb-5 pb-5'>
                     <div className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>All</div>
-                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("Men's clothing")}>Men's Clothing</div>
+                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</div>
                     <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</div>
-                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("Jewelery")}>Jewelery</div>
+                    <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>Jewelery</div>
                     <div className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</div>
                 </div>
                 {filter.map((product) => {
@@ -54,7 +55,7 @@ const filterProduct = (cat) => {
                                     <div className="card-body">
                                         <h5 className="card-title mb-0">{product.title.substring(0, 12)}...</h5>
                                         <p className="card-text lead fw-bold">${product.price}</p>
-                                        <a href="#" className="btn btn-primary">Buy Now</a>
+                                        <NavLink to="{`/products/${product.id}`}" className="btn btn-primary">Buy Now</NavLink>
                                     </div>
                                 </div>
                             </div>
