@@ -7,6 +7,7 @@ import Product from './component/Product';
 import Cart from './component/Cart';
 import Signup from './component/Signup';
 import Login from './component/Login';
+import Logout from './component/Logout';
 import { AuthProvider } from './component/context/AuthContext';
 import PrivateRoute from './component/PrivateRoute';
 
@@ -22,6 +23,7 @@ function App() {
         <PrivateRoute exact path="/cart" component={Cart}/>
         <Route exact path="/signup" component={Signup}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/logout" component={Logout}/>
         <Redirect from="/" to="/cart"/>
 
 
