@@ -15,7 +15,7 @@ export default function Login() {
 
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
 
 
         try {
